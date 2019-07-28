@@ -2,10 +2,11 @@
 //  AppDelegate.swift
 //  BeerCraft
 //
-//  Created by ARY@N on 27/07/19.
+//  Created by ARY@N on 28/07/19.
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        print(Realm.Configuration.defaultConfiguration.fileURL!)// to get the path of Realm datatbase
+        do {
+            _ = try Realm()
+        } catch {
+            print("Error Initializing new Realm \(error)")
+        }
         return true
     }
 
